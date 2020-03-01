@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResetP"
+    android:background="@color/white"
+    >
+
+
+
+
+    <ImageView
+        android:id="@+id/ll"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="83dp"
+        android:layout_marginLeft="83dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginRight="78dp"
+        android:background="@drawable/ret1"></ImageView>
+
+
+    <EditText
+        android:id="@+id/retpassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/ll"
+        android:layout_marginTop="6dp"
+        android:drawableLeft="@drawable/ic_lock"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:password="true"
+
+
+        android:textSize="20dp"></EditText>
+
+
+    <EditText
+        android:id="@+id/retconfirmpassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/retpassword"
+        android:layout_marginTop="17dp"
+        android:drawableLeft="@drawable/ic_lock"
+        android:hint="confirm password"
+        android:inputType="textPassword"
+        android:password="true"
+
+
+        android:textSize="20dp"></EditText>
+
+    <Button
+        android:id="@+id/resetpassword"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/retconfirmpassword"
+        android:layout_marginTop="30dp"
+        android:background="@color/white"
+        android:layout_centerInParent="true"
+
+        android:text="Reset password"></Button>
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
