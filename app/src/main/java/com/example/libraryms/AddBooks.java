@@ -1,4 +1,4 @@
-package com.example.libraryms;;
+package com.example.libraryms;
 
 import androidx.appcompat.app.AppCompatActivity;
 
