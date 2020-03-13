@@ -1,4 +1,4 @@
-package com.example.newone;
+package com.example.myapplication;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -18,19 +18,22 @@ import java.net.URLEncoder;
 
 public class BackgroundTask extends AsyncTask<String, String, String> {
     Context context;
-    BackgroundTask(Context ctx){
+    static   String retx="";
+    BackgroundTask(Context ctx,String sa){
     this.context=ctx;
+    this.retx =sa;
+
     }
 @Override
 
 protected String doInBackground(String... strings) {
     String type = strings[0];
     String name = strings[1];
-    String address = strings[2];
+    String surname = strings[2];
     String email = strings[3];
-    String username = strings[4];
+    String gender = strings[4];
     String password = strings[5];
-    String regURL = "http://192.168.137.1/andphpreg.php";
+    String regURL = "http://146.141.21.235/reg.php";
     if (type.equals("reg")) {
         try {
             URL url = new URL(regURL);
@@ -43,9 +46,9 @@ protected String doInBackground(String... strings) {
                 OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
                 BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
                 String insert_data = URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8") +
-                        "&" + URLEncoder.encode("address", "UTF-8") + "=" + URLEncoder.encode(address, "UTF-8") +
+                        "&" + URLEncoder.encode("surname", "UTF-8") + "=" + URLEncoder.encode(surname, "UTF-8") +
                         "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") +
-                        "&" + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8") +
+                        "&" + URLEncoder.encode("gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8") +
                         "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
                 bufferedWriter.write(insert_data);
                 bufferedWriter.flush();
@@ -54,16 +57,19 @@ protected String doInBackground(String... strings) {
                 InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "ISO-8859-1");
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                 String result = "";
+
                 String line = "";
                 StringBuilder stringBuilder = new StringBuilder();
                 while ((line = bufferedReader.readLine()) != null) {
-                    stringBuilder.append(line).append("\n");
+                    result += line;
+                    //stringBuilder.append(line).append("\n");
                 }
 
-                result = stringBuilder.toString();
+                //result = stringBuilder.toString();
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
+                //retx =result;
                 return result;
             }catch (IOException e) {
             }
@@ -74,7 +80,6 @@ protected String doInBackground(String... strings) {
         }
     return null;
 
-
     }
     @Override
     protected void onPreExecute(){
@@ -83,8 +88,10 @@ protected String doInBackground(String... strings) {
 
     @Override
     protected void onPostExecute(String s){
+        //retx =s;
         Toast.makeText(context, s, Toast.LENGTH_LONG).show();
-        //super.onPostExecute(s);
+
+        ///Toast.makeText(context.getApplicationContext(),s,Toast.LENGTH_SHORT).show();
     }
 
 }
